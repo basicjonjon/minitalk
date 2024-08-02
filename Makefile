@@ -4,13 +4,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SERVEUR_FILE = serveur
-CLIENT_FILE = client
+SERVEUR_FILE = server server_sig
+CLIENT_FILE = client client_sig
 
 # ALGO_FILE = random
 
 # All directories
-SERVEUR_DIR = ./serveur/
+SERVEUR_DIR = ./server/
 CLIENT_DIR = ./client/
 OBJS_DIR = ./objet/
 LIBFT_PATH = ./libft
@@ -41,11 +41,11 @@ $(OBJS_DIR)%.o: $(CLIENT_DIR)%.c
 	@echo "$@ : $(GREEN)[OK]$(NC)"
 
 $(NAME): $(LIBFT) $(CLIENT_OBJ) $(SERVEUR_OBJ)
-	@$(CC) $(CFLAGS) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT_DIR)$(CLIENT_FILE)
-	@$(CC) $(CFLAGS) $(SERVEUR_OBJ) $(LIBFT) -o $(SERVEUR_DIR)$(SERVEUR_FILE)
+	@$(CC) $(CFLAGS) $(CLIENT_OBJ) $(LIBFT) -o ./client/client
+	@$(CC) $(CFLAGS) $(SERVEUR_OBJ) $(LIBFT) -o ./server/server
 	@echo "$@ : $(BLUE)[READY]$(NC)"
 	@echo "\n$(BLUE)============ [ serveur START ] ============$(NC)\n"
-	@./serveur/serveur
+	@./server/server
 
 
 $(LIBFT):
