@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 13:51:34 by jle-doua          #+#    #+#             */
-/*   Updated: 2024/08/01 18:12:04 by jle-doua         ###   ########.fr       */
+/*   Updated: 2024/08/02 11:54:09 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	signal_handler(int signum)
 	static int	length = 0;
 	static int	pid = 0;
 	static int	c = 0;
+	int			u_value;
 
+	u_value = 500;
 	if (trigger == 2)
 	{
 		if (signum == SIGUSR2)
@@ -60,8 +62,8 @@ void	signal_handler(int signum)
 			c = 0;
 			counter = 0;
 			trigger--;
-			printf("PID CLI : %i\n", pid);
-			usleep(400);
+			// printf("PID CLI : %i\n", pid);
+			usleep(u_value);
 		}
 	}
 	else if (trigger == 1)
@@ -83,8 +85,8 @@ void	signal_handler(int signum)
 			c = 0;
 			counter = 0;
 			trigger--;
-			printf("LENGTH : %i\n", length);
-			usleep(400);
+			// printf("LENGTH : %i\n", length);
+			usleep(u_value);
 		}
 	}
 	else
@@ -119,8 +121,8 @@ void	signal_handler(int signum)
 			trigger = 2;
 			y = 0;
 			str = NULL;
+			kill(pid, SIGUSR1);
 		}
-		
 	}
 }
 
